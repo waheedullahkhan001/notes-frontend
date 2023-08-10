@@ -1,0 +1,45 @@
+
+
+.pages {
+    display: grid;
+    grid-gap: 1rem;
+}
+   
+.page {
+    border: solid 0.1rem;
+    border-radius: 5px;
+    text-align: center; /* For debugging */
+}
+
+.auth-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 4rem;
+}
+
+.auth-elements {
+    display: grid;
+    grid-gap: 0.75rem;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(4rem, 8rem));
+    background-color: antiquewhite;
+    border: solid 0.1rem grey;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+
+#title {
+    grid-column: 1 / span 2;
+}
+
+#username {
+    grid-column: 1 / span 2;
+}
+
+#password {
+    grid-column: 1 / span 2;
+}
+
+
