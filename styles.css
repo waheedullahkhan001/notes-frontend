@@ -2,11 +2,15 @@
     font-family: 'Libre Franklin', sans-serif;
 }
 
+body {
+    margin: 0;
+}
+
 .pages {
     display: grid;
     grid-gap: 1rem;
 }
-   
+
 .page {
     border: solid 0.1rem;
     text-align: center; /* For debugging */
@@ -38,14 +42,56 @@
     grid-column: 1 / span 2;
 }
 
-#username {
-    border: none;
-    grid-column: 1 / span 2;
-}
-
-#password {
+.input-elem {
     border: none;
     grid-column: 1 / span 2;
 }
 
 
+.main-grid {
+    display: grid;
+    height: 100dvh;
+    grid-template-columns: minmax(1rem, 14rem) auto;
+    grid-template-rows: 5rem auto;
+}
+
+.left-nav {
+    display: flex;
+    border: solid black;
+}
+
+.right-nav {
+    display: flex;
+    justify-content: flex-end;
+    border: solid black;
+}
+
+.notes-list {
+    display: grid;
+    align-content: start;
+    border: solid black;
+}
+
+.note-item {
+    border: solid 0.1rem orange;
+    padding: 0.1rem;
+    margin: 0.1rem;
+}
+
+.note-item > * {
+    margin: 0;
+    padding: 0.25rem;
+}
+
+.note-content {
+    border: solid black;
+}
+
+#note-textbox {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    resize: none;
+    border: none;
+}
