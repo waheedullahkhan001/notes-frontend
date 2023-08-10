@@ -1,4 +1,6 @@
-
+* {
+    font-family: 'Libre Franklin', sans-serif;
+}
 
 .pages {
     display: grid;
@@ -7,38 +9,42 @@
    
 .page {
     border: solid 0.1rem;
-    border-radius: 5px;
     text-align: center; /* For debugging */
 }
 
-.auth-page-wrapper {
+.auth-flexbox {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 4rem;
+    padding: 4rem 0rem;
 }
 
-.auth-elements {
+.auth-grid {
     display: grid;
     grid-gap: 0.75rem;
+    text-align: center;
     justify-content: center;
-    grid-template-columns: repeat(2, minmax(4rem, 8rem));
+    grid-template-columns: repeat(2, minmax(5rem, 8rem));
     background-color: antiquewhite;
     border: solid 0.1rem grey;
     border-radius: 16px;
-    padding: 25px;
+    min-height: 14rem;
+    padding:  2rem;
 }
 
 
 #title {
+    margin: 0;
     grid-column: 1 / span 2;
 }
 
 #username {
+    border: none;
     grid-column: 1 / span 2;
 }
 
 #password {
+    border: none;
     grid-column: 1 / span 2;
 }
 
