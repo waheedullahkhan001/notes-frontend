@@ -4,6 +4,8 @@
 
 body {
     margin: 0;
+    background-color: #202124;
+    color: blanchedalmond;
 }
 
 .pages {
@@ -51,47 +53,51 @@ body {
 .main-grid {
     display: grid;
     height: 100dvh;
-    grid-template-columns: minmax(1rem, 14rem) auto;
+    grid-template-columns: minmax(1rem, 20rem) auto;
     grid-template-rows: 5rem auto;
 }
 
-.left-nav {
+.nav-bar {
     display: flex;
-    border: solid black;
+    justify-content: space-between;
+    align-items: stretch;
+    grid-column: 1 / span 2;
+    border: solid 0.1rem;
 }
 
-.right-nav {
-    display: flex;
-    justify-content: flex-end;
-    border: solid black;
+.list-icon {
+    margin: 0;
+    padding: 0;
+    margin-left: 1rem;
 }
 
 .notes-list {
     display: grid;
     align-content: start;
-    border: solid black;
+    border: solid 0.1rem;
 }
 
 .note-item {
-    border: solid 0.1rem orange;
-    padding: 0.1rem;
-    margin: 0.1rem;
+    margin: 0.5rem;
+    border-radius: 16px;
 }
 
-.note-item > * {
-    margin: 0;
-    padding: 0.25rem;
+.note-viewbox {
+    display: grid;
+    grid-template-rows: 4rem 1fr;
 }
 
-.note-content {
-    border: solid black;
+.note-bar {
+    display: flex;
+    justify-content: space-between;
 }
 
 #note-textbox {
-    height: 100%;
-    width: 100%;
     padding: 0;
     margin: 0;
     resize: none;
     border: none;
+    background-color: #202124;
+    color: blanchedalmond;
+    border: solid 0.1rem;
 }
