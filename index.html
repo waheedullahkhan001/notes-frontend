@@ -27,7 +27,7 @@
         <div> <!-- Main page -->
             <div class="main-grid">
                 <div class="nav-bar">
-                    <svg class="list-icon" viewBox="0 0 24 24" width="3rem" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="list-icon" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M9 6l11 0"></path>
                         <path d="M9 12l11 0"></path>
@@ -37,24 +37,51 @@
                         <path d="M5 18l0 .01"></path>
                     </svg>
                     <h2 id="logo">Notes</h2>
-                    <button id="logout">Logout</button>
+                    <svg class="logout-icon" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                        <path d="M9 12h12l-3 -3"></path>
+                        <path d="M18 15l3 -3"></path>
+                    </svg>
                 </div>
                 <div class="notes-list">
                     <div class="note-item">
-                        <h4>Random thoughts #1</h4>
-                        <p>How about I make a progr...</p>
+                        <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M9 7l6 0"></path>
+                            <path d="M9 11l6 0"></path>
+                            <path d="M9 15l4 0"></path>
+                        </svg>
+                        <h4 class="note-title">Random thoughts #1</h4>
+                        <p class="note-preview">How about I make a progr...</p>
                     </div>
-                    <div class="note-item">
-                        <h4>Random thoughts #2</h4>
-                        <p>How about I make a progr...</p>
+                    <div class="note-item selected-note">
+                        <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M9 7l6 0"></path>
+                            <path d="M9 11l6 0"></path>
+                            <path d="M9 15l4 0"></path>
+                        </svg>
+                        <h4 class="note-title">Random thoughts #2</h4>
+                        <p class="note-preview">How about I make a progr...</p>
                     </div>
                 </div>
                 <div class="note-viewbox">
-                    <div class="note-bar">
-                        <h2>Title of the note</h2>
-                        <button>Edit</button>
+                    <div>
+                        <div class="note-bar">
+                            <h2>Random thoughts #2</h2>
+                            <svg class="edit-icon" width="1.5rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                <path d="M16 5l3 3"></path>
+                            </svg>
+                        </div>
+                        <hr>
                     </div>
-                    <textarea id="note-textbox">The content of the select note will go here.</textarea>
+                    <textarea id="note-textbox" spellcheck="false">How about I make a progr...</textarea>
                 </div>
             </div>
         </div>
