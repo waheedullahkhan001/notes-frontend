@@ -1,0 +1,177 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none 0px;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    color: blanchedalmond;
+    background-color: #202124;
+}
+
+hr {
+    border: solid 1px;
+}
+
+
+
+.main-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 5rem auto; /* Reconsider navbar height */
+
+    height: 100dvh;
+}
+
+
+
+.header {
+    grid-column: 1 / span 2;
+    border: solid 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    text-shadow: 0 0 1rem blanchedalmond;
+}
+
+.header-icon {
+    margin: 1rem;
+    cursor: pointer;
+}
+
+
+
+.notes-list {
+    grid-column: 1;
+    min-width: 24rem;
+    border-right: solid 0.1rem;
+    
+    display: grid;
+    align-content: start;
+}
+
+.note-item {
+    margin: 0.5rem 0.5rem 0rem;
+    padding: 1rem 0.5rem;
+
+    border: solid #404144;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: 3rem auto;
+}
+
+.note-item:hover {
+    border: solid #707174;
+}
+
+.selected-note {
+    background-color: #404144;
+}
+
+.note-icon {
+    grid-row: 1 / span 2;
+}
+
+.left-padding {
+    padding-left: 6pt;
+}
+
+
+
+.note-view {
+    grid-column: 2;
+    padding: 1rem;
+    
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.note-header {
+    margin: 1rem 0rem;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.button {
+    align-self: flex-end;
+
+    margin: 0.25rem;
+
+    height: 3rem;
+    width: 5rem;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    color: #202124;
+    background-color: blanchedalmond;
+
+    border: solid blanchedalmond 1px;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    color: blanchedalmond;
+    background-color: #202124;
+}
+
+.note-title {
+    padding-left: 0.5rem;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    color: blanchedalmond;
+    background-color: #202124;
+
+    min-width: 5rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: right;
+    flex-wrap: wrap;
+}
+
+.note-textbox {
+    padding: 1rem;
+
+    font-size: 18px;
+
+    background-color: #202124;
+    color: blanchedalmond;
+
+    border: solid 1px;
+    border-radius: 8px;
+
+    resize: none;
+}
+
+
+@media screen and (max-width: 471px) {
+    .note-header {
+        grid-template-columns: 1fr min-content;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .notes-list {
+        display: none;
+    }
+}
