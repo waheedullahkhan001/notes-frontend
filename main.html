@@ -5,13 +5,13 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <!-- <script src='main.js'></script> -->
+    <script src='main.js'></script>
 </head>
 <body>
     <div class="main-grid">
 
         <header class="header">
-            <svg class="header-icon" id="list-btn" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="header-icon" id="list-btn" onclick="toggleNotesList();" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M9 6l11 0"></path>
                 <path d="M9 12l11 0"></path>
@@ -29,7 +29,8 @@
             </svg>
         </header>
 
-        <ul class="notes-list">
+        <ul class="notes-list" id="notes-list">
+            <button class="button" style="width: auto; margin: 0.5rem 0.5rem 0rem;" id="create-btn">Create</button>
             <li class="note-item">
                 <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -54,7 +55,7 @@
             </li>
         </ul>
 
-        <main class="note-view">
+        <main class="note-view" id="note-view">
             <header class="note-header">
                 <input readonly class="note-title" id="note-title" value="Random heeeblo lmao xD"/>
                 <div class="controls">
