@@ -131,8 +131,13 @@ hr {
     background-color: #202124;
 }
 
+.border {
+    border: solid 1px;
+    border-radius: 8px;
+}
+
 .note-title {
-    padding-left: 0.5rem;
+    padding-left: 1rem;
 
     font-size: 24px;
     font-weight: bold;
@@ -149,16 +154,13 @@ hr {
     flex-wrap: wrap;
 }
 
-.note-textbox {
+.note-textarea {
     padding: 1rem;
 
     font-size: 18px;
 
     background-color: #202124;
     color: blanchedalmond;
-
-    border: solid 1px;
-    border-radius: 8px;
 
     resize: none;
 }

@@ -7,11 +7,11 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
-<body>
+<body onload="onBodyLoad()">
     <div class="main-grid">
 
         <header class="header">
-            <svg class="header-icon" id="list-btn" onclick="toggleNotesList();" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="header-icon" onclick="toggleNotesList()" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M9 6l11 0"></path>
                 <path d="M9 12l11 0"></path>
@@ -30,7 +30,7 @@
         </header>
 
         <ul class="notes-list" id="notes-list">
-            <button class="button" style="width: auto; margin: 0.5rem 0.5rem 0rem;" id="create-btn">Create</button>
+            <button class="button" style="width: auto; margin: 0.5rem 0.5rem 0rem;" onclick="createNote()">Create</button>
             <li class="note-item">
                 <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -57,23 +57,15 @@
 
         <main class="note-view" id="note-view">
             <header class="note-header">
-                <input readonly class="note-title" id="note-title" value="Random heeeblo lmao xD"/>
+                <input readonly class="note-title" id="note-title" placeholder="Title"/>
                 <div class="controls">
-                    <button class="button" id="primary-btn">Edit</button>
-                    <button class="button" id="delete-btn">Delete</button>
+                    <button class="button" id="save-btn">Save</button>
+                    <button class="button" id="cancel-btn">Cancel</button>
+                    <button class="button" hidden id="edit-btn">Edit</button>
+                    <button class="button" hidden id="delete-btn">Delete</button>
                 </div>
             </header>
-            <textarea readonly class="note-textbox" id="note-textbox" spellcheck="false">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sapien magna, dictum in sollicitudin non, porta cursus arcu. Donec eget finibus eros. Cras sit amet purus vitae ex facilisis accumsan. Nulla sit amet leo hendrerit, maximus sem non, elementum orci. Nam facilisis velit nec ullamcorper dictum. Nam tortor sapien, scelerisque eu nunc dignissim, eleifend iaculis odio. Mauris est ex, porttitor non nibh a, porttitor blandit nisi. In dictum justo sed bibendum dictum. Quisque viverra sem turpis, a commodo ante laoreet quis. Nulla at lacus dui. Maecenas eu eros fermentum, tincidunt magna vel, tincidunt augue. Mauris at congue dui. Integer vel imperdiet orci.
-
-Vivamus sit amet sollicitudin turpis. Morbi consectetur lorem ultrices dui volutpat facilisis. Ut in ullamcorper mauris, a placerat velit. Nunc quis sapien nec nisi sollicitudin sagittis. Curabitur fringilla, urna at ultricies vulputate, justo diam gravida velit, nec sagittis mi orci venenatis arcu. Vivamus ac urna vel metus vestibulum convallis. Vivamus nulla magna, aliquet quis venenatis a, venenatis eget lorem. In fermentum venenatis nibh, at maximus neque porttitor eget. Quisque euismod eleifend gravida. Ut turpis dui, dignissim id est cursus, laoreet ultrices ante. In nec malesuada metus. Cras risus orci, efficitur vitae elit quis, sagittis rutrum sem.
-
-Curabitur a lorem eros. Praesent tincidunt diam sem, eu volutpat dui fermentum ac. Quisque tristique ante sit amet turpis malesuada, in fermentum nibh sollicitudin. Suspendisse nec lectus vitae ante sodales pretium a nec felis. Morbi facilisis lacus massa, id accumsan libero pellentesque et. Praesent ac ultricies purus. Sed metus ante, accumsan vitae finibus id, dignissim et nisi. Pellentesque mollis fringilla est, et placerat mi ultricies et.
-
-Integer nulla orci, ullamcorper sed accumsan et, convallis et nulla. Ut eget tincidunt massa. Donec nec accumsan ligula. Curabitur malesuada est nunc, ut dignissim sapien hendrerit ac. Proin ultrices elit sit amet sem sagittis convallis. Duis finibus neque at est semper cursus. Cras ac felis id arcu bibendum pulvinar.
-
-Phasellus tempor mollis faucibus. Aliquam pellentesque ligula ac aliquam ullamcorper. Mauris laoreet massa at erat molestie venenatis. Maecenas a rutrum leo, eu egestas enim. Duis mollis lectus et dolor dapibus dignissim sit amet sit amet dui. Praesent accumsan sem nisl, in rutrum purus venenatis sed. Ut gravida eleifend felis id interdum. Curabitur ipsum risus, congue in aliquet eget, vestibulum eu massa. Duis vitae libero lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec suscipit lacus ante, et ullamcorper enim vestibulum vitae. Integer sed elementum turpis, vitae pellentesque metus.
-</textarea>
+            <textarea readonly class="note-textarea border" id="note-textarea" spellcheck="false" placeholder="Text"></textarea>
         </main>
     </div>
 </body>
