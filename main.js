@@ -45,16 +45,21 @@ function toggleNotesList() {
 }
 
 
-function createNote() {
+function editNote() {
     if (!noteTitle.classList.contains("border")) {
         noteTitle.classList.add("border");
     }
-    
-    noteTitle.value = "";
-    noteTextArea.value = "";
 
     noteTitle.removeAttribute("readonly");
     noteTextArea.removeAttribute("readonly");
     
     noteTitle.focus();
+}
+
+
+function createNote() {
+    editNote();
+    
+    noteTitle.value = "";
+    noteTextArea.value = "";
 }
