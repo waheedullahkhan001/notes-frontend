@@ -109,7 +109,7 @@ hr {
 .button {
     align-self: flex-end;
 
-    margin: 0.25rem;
+    margin: 0rem 0.25rem;
 
     height: 3rem;
     width: 5rem;
