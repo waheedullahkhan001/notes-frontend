@@ -26,8 +26,8 @@ function createNoteItem(id, title, text) {
     li.setAttribute("id", "note-" + id);
     li.setAttribute("data-note-id", id);
 
-    if (text.length > 10) {
-        text = text.substring(0, 10) + "...";
+    if (text.length > 32) {
+        text = text.substring(0, 32) + "...";
     }
 
     li.innerHTML = `
@@ -62,7 +62,7 @@ function loadNotes() {
     }).then(response => {
         if (response.status == 200) {
             response.json().then(data => {
-                let notes = data.notes;
+                notes = data.notes;
                 for (var i = 0; i < notes.length; i++) {
                     notesList.appendChild(createNoteItem(notes[i].id, notes[i].title, notes[i].content));
                 }
@@ -81,6 +81,19 @@ function saveNote() {
         alert("Please enter a title for your note.");
         return;
     }
+    
+    var elements = document.getElementsByClassName("selected-note");
+    var edit = elements.length == 1;
+
+
+    if (edit) {
+        var method = "PUT"
+        var url = base_url + "/notes/" + elements[0].getAttribute("data-note-id")
+    }
+    else {
+        var method = "POST"
+        var url = base_url + "/notes/create"
+    }
 
 
     var requestBody = {
@@ -88,8 +101,8 @@ function saveNote() {
         "content": noteTextArea.value
     }
 
-    fetch(base_url + "/notes/create", {
-        method: "POST",
+    fetch(url, {
+        method: method,
         body: JSON.stringify(requestBody),
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("token"), 
@@ -97,9 +110,34 @@ function saveNote() {
         }
     }).then(response => {
         if (response.status == 200) {
-            alert("Note created successfully!");
-            createNote();
+            alert("Request was successful!");
+            edit ? selectNoteWithoutCheck(elements[0]) : createNote();
             loadNotes()
+        }
+        else {
+            response.json().then(data => {
+                alert(data.message);
+            })
+        }
+    });
+}
+
+function deleteNote() {
+    var elements = document.getElementsByClassName("selected-note");
+    note = elements[0];
+    var id = note.getAttribute("data-note-id");
+    
+    fetch(base_url + "/notes/" + id, {
+        method: "DELETE",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token"),
+            "Content-type": "application/json"
+        }
+    }).then(response => {
+        if (response.status == 200) {
+            alert("Note deleted successfully!");
+            createNote();
+            loadNotes();
         }
         else {
             response.json().then(data => {
@@ -192,7 +230,14 @@ function selectNoteWithoutCheck(element) {
     saveButton.setAttribute("hidden", "hidden");
     cancelBUtton.setAttribute("hidden", "hidden");
 
-    // TODO: Fill data
+    // Fill data
+    var id = element.getAttribute("data-note-id");
+    for (var i = 0; i < notes.length; i++) {
+        if (notes[i].id == id) {
+            noteTitle.value = notes[i].title;
+            noteTextArea.value = notes[i].content;
+        }
+    }
 }
 
 function cancel() {
