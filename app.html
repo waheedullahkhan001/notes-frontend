@@ -21,7 +21,7 @@
                 <path d="M5 18l0 .01"></path>
             </svg>
             <h2 class="logo" id="logo">Notes</h2>
-            <svg class="header-icon" id="logout-btn" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="header-icon" onclick="logout()" width="3rem" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
                 <path d="M9 12h12l-3 -3"></path>
@@ -31,35 +31,13 @@
 
         <ul class="notes-list" id="notes-list">
             <button class="button" style="width: auto; margin: 0.5rem 0.5rem 0rem;" onclick="createNote()">Create</button>
-            <li class="note-item" onclick="selectNote(this)">
-                <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
-                    <path d="M9 7l6 0"></path>
-                    <path d="M9 11l6 0"></path>
-                    <path d="M9 15l4 0"></path>
-                </svg>
-                <h4 class="left-padding">Random thoughts #1</h4>
-                <p class="left-padding">How about I make a progr...</p>
-            </li>
-            <li class="note-item" onclick="selectNote(this)">
-                <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
-                    <path d="M9 7l6 0"></path>
-                    <path d="M9 11l6 0"></path>
-                    <path d="M9 15l4 0"></path>
-                </svg>
-                <h4 class="left-padding">Random thoughts #2</h4>
-                <p class="left-padding">How about I make a progr...</p>
-            </li>
         </ul>
 
         <main class="note-view" id="note-view">
             <header class="note-header">
                 <input readonly class="note-title" id="note-title" placeholder="Title"/>
                 <div class="controls">
-                    <button class="button" id="save-btn">Save</button>
+                    <button class="button" onclick="saveNote()" id="save-btn">Save</button>
                     <button class="button" onclick="cancel()" id="cancel-btn">Cancel</button>
                     <button class="button" hidden onclick="editNote()" id="edit-btn">Edit</button>
                     <button class="button" hidden id="delete-btn">Delete</button>

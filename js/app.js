@@ -1,9 +1,11 @@
+const base_url = "http://localhost:8080/api/v1";
 
 var saveButton, cancelBUtton;
 var editButton, deleteButton;
 var notesList, noteView;
 var noteTitle, noteTextArea;
-
+var notes = [];
+  
 function setup() {
     saveButton = document.getElementById("save-btn");
     cancelBUtton = document.getElementById("cancel-btn");
@@ -14,8 +16,98 @@ function setup() {
     noteTitle = document.getElementById("note-title");
     noteTextArea = document.getElementById("note-textarea");
     createNote();
+    loadNotes();
 }
 
+function createNoteItem(id, title, text) {
+    var li = document.createElement("li");
+    li.classList.add("note-item");
+    li.setAttribute("onclick", "selectNote(this)");
+    li.setAttribute("id", "note-" + id);
+    li.setAttribute("data-note-id", id);
+
+    if (text.length > 10) {
+        text = text.substring(0, 10) + "...";
+    }
+
+    li.innerHTML = `
+        <svg class="note-icon" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z"></path>
+            <path d="M9 7l6 0"></path>
+            <path d="M9 11l6 0"></path>
+            <path d="M9 15l4 0"></path>
+        </svg>
+        <h4 class="left-padding">${title}</h4>
+        <p class="left-padding">${text}</p>
+        `;
+        
+    return li;
+}
+
+function unloadNotes() {
+    var notes = document.getElementsByClassName("note-item");
+    for (var i = 0; i < notes.length; i++) {
+        notes[i].remove();
+    }
+}
+
+function loadNotes() {
+    unloadNotes();
+    fetch(base_url + "/notes/all", {
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token"), 
+        }
+    }).then(response => {
+        if (response.status == 200) {
+            response.json().then(data => {
+                let notes = data.notes;
+                for (var i = 0; i < notes.length; i++) {
+                    notesList.appendChild(createNoteItem(notes[i].id, notes[i].title, notes[i].content));
+                }
+            })
+        }
+        else {
+            response.json().then(data => {
+                alert(data.message);
+            })
+        }
+    });
+}
+
+function saveNote() {
+    if (noteTitle.value.length == 0) {
+        alert("Please enter a title for your note.");
+        return;
+    }
+
+
+    var requestBody = {
+        "title": noteTitle.value,
+        "content": noteTextArea.value
+    }
+
+    fetch(base_url + "/notes/create", {
+        method: "POST",
+        body: JSON.stringify(requestBody),
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token"), 
+            "Content-type": "application/json"
+        }
+    }).then(response => {
+        if (response.status == 200) {
+            alert("Note created successfully!");
+            createNote();
+            loadNotes()
+        }
+        else {
+            response.json().then(data => {
+                alert(data.message);
+            })
+        }
+    });
+}
 
 function toggleNotesList() {
     // Good luck understanding this
@@ -111,6 +203,11 @@ function cancel() {
     else {
         createNote();
     }
+}
+
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "auth.html";
 }
 
 function getStyle(id, name) {

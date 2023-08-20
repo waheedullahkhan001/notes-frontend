@@ -8,14 +8,14 @@
     <link rel='stylesheet' type='text/css' media='screen' href='css/auth.css'>
     <script src='js/auth.js'></script>
 </head>
-<body>
+<body onload="setup()">
     <div class="container">
         <main class="content border">
             <h2 class="logo">Notes</h2>
             <input class="input border font" id="username-input" type="username" placeholder="Username">
             <input class="input border font" id="password-input" type="password" placeholder="Password">
-            <button class="button border font">Login</button>
-            <button class="button border font">Register</button>
+            <button class="button border font" onclick="login()">Login</button>
+            <button class="button border font" onclick="register()">Register</button>
         </main>
     </div>
 </body>
